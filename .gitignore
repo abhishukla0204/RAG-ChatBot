@@ -1,0 +1,17 @@
+# Environment variables (secrets)
+.env
+
+# Generated FAISS vector store
+vectorstore/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Streamlit
+.streamlit/
+
+# IDE
+.vscode/
+.idea/
