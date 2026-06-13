@@ -1,27 +1,27 @@
-# 🤖 RAG Chatbot — Build a RAG Chatbot with LangChain
+# RAG Chatbot — Build a RAG Chatbot with LangChain
 
 A **Retrieval-Augmented Generation (RAG)** chatbot that answers questions **only from your uploaded PDF document** — no hallucination. Built with LangChain, FAISS, HuggingFace Embeddings, and Google Gemini.
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
-📄 PDF Document
+PDF Document
     │
     ▼
 ┌──────────────┐
-│  PyPDFLoader  │  ← Load PDF pages
+│  PyPDFLoader │  ← Load PDF pages
 └──────┬───────┘
        ▼
-┌─────────────────────────────┐
+┌────────────────────────────────┐
 │ RecursiveCharacterTextSplitter │  ← Chunk into 1000-char segments
-└──────────┬──────────────────┘
+└──────────┬─────────────────────┘
            ▼
-┌──────────────────────┐
+┌────────────────────────┐
 │ HuggingFace Embeddings │  ← all-MiniLM-L6-v2 (local, free)
 │ (sentence-transformers)│
-└──────────┬───────────┘
+└──────────┬─────────────┘
            ▼
 ┌────────────────┐
 │  FAISS Index   │  ← Vector store (saved locally)
@@ -29,14 +29,14 @@ A **Retrieval-Augmented Generation (RAG)** chatbot that answers questions **only
         ▼
 ┌────────────────┐     ┌─────────────────┐
 │   Retriever    │────▶│  RetrievalQA    │
-│  (top-k = 4)  │     │    Chain        │
+│  (top-k = 4)   │     │    Chain        │
 └────────────────┘     │                 │
                        │  + Google Gemini│
-  👤 User Question ──▶ │  + Custom Prompt│ ──▶ 🤖 Grounded Answer
+     User Question ──▶ │  + Custom Prompt│ ──▶ Grounded Answer
                        └─────────────────┘
 ```
 
-## 📋 Pipeline Steps
+## Pipeline Steps
 
 | Step | Action | Tool |
 |------|--------|------|
@@ -49,7 +49,7 @@ A **Retrieval-Augmented Generation (RAG)** chatbot that answers questions **only
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone & Install
 
@@ -85,7 +85,7 @@ streamlit run app.py
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 GenAITutorials/
@@ -102,7 +102,7 @@ GenAITutorials/
 
 ---
 
-## 🛡️ Anti-Hallucination
+## Anti-Hallucination
 
 The chatbot uses a **custom prompt** that strictly instructs the LLM to:
 - Answer **only** from the provided document context
@@ -111,7 +111,7 @@ The chatbot uses a **custom prompt** that strictly instructs the LLM to:
 
 ---
 
-## 🔧 Tech Stack
+## Tech Stack
 
 | Component | Technology |
 |-----------|-----------|
@@ -125,7 +125,7 @@ The chatbot uses a **custom prompt** that strictly instructs the LLM to:
 
 ---
 
-## 💡 Usage Examples
+## Usage Examples
 
 **Question (in document):**  
 > "What is the main topic of chapter 3?"  
@@ -137,6 +137,6 @@ The chatbot uses a **custom prompt** that strictly instructs the LLM to:
 
 ---
 
-## 📝 License
+## License
 
 This project is for educational purposes as part of the GenAI course assignment.
